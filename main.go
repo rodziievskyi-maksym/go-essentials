@@ -17,7 +17,7 @@ import (
 var pl = fmt.Println
 
 func main() {
-
+	pl("Main function processing...")
 	/* alt + command + / -> creates comment block section*/
 	// out of topic
 	//newYearFunction()
