@@ -1,6 +1,6 @@
 package main
 
-func runSecondPart() {
+func  runSecondPart() {
 	functionAboutFunction()
 }
 
