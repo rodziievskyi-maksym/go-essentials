@@ -17,7 +17,9 @@ import (
 var pl = fmt.Println
 
 func main() {
+	pl("---------------------------")
 	pl("Main function processing...")
+	pl("---------------------------\n")
 	/* alt + command + / -> creates comment block section*/
 	// out of topic
 	//newYearFunction()
@@ -36,8 +38,11 @@ func main() {
 	//simplyAboutArrays() // multidimensional array, how to convert string to runes, byte to string
 	//sliceThat()
 
-	//
+	// Part two
 	runSecondPart()
+
+	// Part three
+	workWithFiles()
 }
 
 func sliceThat() {

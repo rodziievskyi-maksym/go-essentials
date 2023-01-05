@@ -17,3 +17,5 @@ https://pkg.go.dev/math/rand
 
 https://pkg.go.dev/time
 
+How to fix accidentally added .idea folder in git repo:
+https://stackoverflow.com/questions/11124053/accidentally-committed-idea-directory-files-into-git
