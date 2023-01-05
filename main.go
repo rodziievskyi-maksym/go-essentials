@@ -32,6 +32,134 @@ func main() {
 	//whatAboutTime() // time package, rand package
 	//mathFunctions()
 	//exampleOfCodesForPrintF() // diff format codes Sprintf example
+	//moreAboutLoops()
+	//simplyAboutArrays() // multidimensional array, how to convert string to runes, byte to string
+	//sliceThat()
+
+	//
+	runSecondPart()
+}
+
+func sliceThat() {
+	 sliceOne := make([]string, 6)
+	 pl(sliceOne)
+	 pl(len(sliceOne))
+	 pl(cap(sliceOne))
+
+	 // slice it is view of actual array, slice points on array that allocated in memory, and we can do a bunch of slices
+	 // referencing to one array without taking an extra space
+	 arr := [5]string{"One", "Two","Three", "Four", "Five"}
+	 firstSliceOfArray := arr[2:]
+	 pl(firstSliceOfArray)
+	 pl(reflect.TypeOf(arr))
+	 pl(reflect.TypeOf(firstSliceOfArray))
+	 fmt.Printf("Adress of array = %v: %p\n", arr, &arr)
+	 fmt.Printf("Adress of slice = %v: %p\n", firstSliceOfArray, &firstSliceOfArray)
+
+	 // if we change basic array value in slice also update
+	 arr[2] = "THREE"
+	 pl(firstSliceOfArray)
+
+	 // and in the same way it change value in basic array if we change it in a slice
+	 firstSliceOfArray[0] = "BOOM"
+	 pl(firstSliceOfArray)
+	 pl(arr)
+
+	 // append -> build-in function that insert new value in array or slice
+	 newSlice := append(firstSliceOfArray, "Six", "Seven")
+	 pl(newSlice)
+}
+
+func simplyAboutArrays() {
+	// ways of declaration
+	var arrayOfInts [5]int
+	arrayOfInts[0] = 4
+
+	newArrayOfNumbers := [5]int{1,2,3,4,5}
+
+	pl("Array Length:", len(newArrayOfNumbers))
+	for i := 0; i < len(newArrayOfNumbers); i++ {
+		pl(newArrayOfNumbers[i])
+	}
+
+	for i, number := range newArrayOfNumbers {
+		fmt.Printf("Index: %d Number: %d\n", i, number)
+	}
+
+	//multi-dimensional array
+	multiArray := [2][5]int{
+		{1,2,3,4,5},
+		{6,7,8,9,0},
+	}
+
+	for i := 0; i < len(multiArray); i++ {
+		pl("Array number", i)
+		for j := 0; j < len(multiArray[i]); j++ {
+			pl("Numbers of inner Array", multiArray[i][j])
+		}
+	}
+
+	aString := "abcdifg"
+	runeArray := []rune(aString)
+	for _, rune := range runeArray {
+		fmt.Printf("Rune Array: %d\n", rune)
+	}
+
+	byteArray := []byte{'a', 'b' , 'c'}
+	pl(byteArray)
+	byteString := string(byteArray[1:])  // start from first element
+	pl("I'm a string: ", byteString)
+}
+
+func moreAboutLoops() {
+	// indexed loop fori
+	for i := 0; i < 10; i++ {
+		pl(1 + i)
+	}
+
+	// for range loop forr
+	for i, int := range []int{1,3,4,5,6,6} {
+		fmt.Printf("iteration: %d\n array number: %d\n", i, int)
+	}
+
+	// conditioned for loop (while)
+	zeroPoint := 0
+	rand.Seed(time.Now().Unix())
+	randomNumber := rand.Intn(20)
+	pl(randomNumber)
+	for zeroPoint < randomNumber{
+		pl(zeroPoint)
+		zeroPoint++
+		pl("Random number:", zeroPoint)
+	}
+
+	// example
+	rand.Seed(time.Now().Unix())
+	randNum := rand.Intn(50) + 1
+	for true {
+		fmt.Print("Guess a number between 0 and 50:")
+		pl("Random number is :", randNum)
+		reader := bufio.NewReader(os.Stdin)
+		guess, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		guess = strings.TrimSpace(guess)
+		intGuess, err := strconv.Atoi(guess)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if intGuess > randNum {
+			pl("Pick a Lower Number")
+		} else if intGuess < randNum {
+			pl("Pick a Higher Number")
+		} else {
+			pl("You've guessed it")
+			break
+		}
+	}
 }
 
 func exampleOfCodesForPrintF() {
