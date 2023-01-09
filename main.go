@@ -45,8 +45,10 @@ func main() {
 	workWithFiles()
 
 	// Part Four
-	MapsAndGenerics()
+	MapsAndGenericsAndStructs()
 
+	// Part Five Struct Encapsulation Getters/Setters
+	setterGetterEncapsulation()
 }
 
 func sliceThat() {

@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/max-rodziyevsky/go-essentials/mypackage"
+	"log"
 )
 
-func MapsAndGenerics() {
+func MapsAndGenericsAndStructs() {
 	/* This Section about Maps: */
 
 	//basicThingWithMaps()
@@ -30,7 +32,7 @@ func MapsAndGenerics() {
 	/*
 		This Section about Define Types
 	*/
-	defineTypesMeasurements()
+	//defineTypesMeasurements()
 }
 
 /* This Section about Maps: */
@@ -235,4 +237,13 @@ func defineTypesMeasurements() {
 
 func (teaSp teaSpoon) toMileLiters() mileLiters {
 	return mileLiters(teaSp * 4.92)
+}
+
+func setterGetterEncapsulation() {
+	date := mypackage.Date{}
+	err := date.SetDay(31)
+	if err != nil {
+		log.Fatal(err)
+	}
+	pl(date.Day())
 }
