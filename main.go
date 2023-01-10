@@ -48,7 +48,11 @@ func main() {
 	MapsAndGenericsAndStructs()
 
 	// Part Five Struct Encapsulation Getters/Setters
-	setterGetterEncapsulation()
+	//setterGetterEncapsulation()
+
+	// Interfaces
+	//stringCaller()
+	//AreaCaller()
 }
 
 func sliceThat() {
