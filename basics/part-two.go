@@ -1,29 +1,28 @@
-package main
+package basics
 
 import "strings"
 
-func  runSecondPart() {
-	//variadicFunction(1,2,3,3,3,4,5,5,6,6,6,6,6)
+func RunSecondPart() {
+	variadicFunction(1, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 6)
 
 	// when I initialize variable it goes to memory and gets address cell
-	//myVariable := "go-essentials"
-	//sendValueAsACopyFunc(myVariable)
-	//pl("Output form manin: ",myVariable)
+	myVariable := "go-essentials"
+	sendValueAsACopyFunc(myVariable)
+	pl("Output form manin: ", myVariable)
 
-	//sendValueAsAPointer(&myVariable)
-	//pl("Out from main, after pointer func", myVariable)
+	sendValueAsAPointer(&myVariable)
+	pl("Out from main, after pointer func", myVariable)
 
 	// We can also store address
-	//storePointerAddress()
+	storePointerAddress()
 
 	// Pointing on array
-	//array := [4]int{1,2,3,4}
-	//pointingArray(&array)
-	//pl(array)
+	array := [4]int{1, 2, 3, 4}
+	pointingArray(&array)
+	pl(array)
 
-
-	//newSlice := []float32{11,2323,31,312.123}
-	//variadicSlice(newSlice...)
+	newSlice := []float32{11, 2323, 31, 312.123}
+	variadicSlice(newSlice...)
 }
 
 func variadicSlice(receivingSlice ...float32) float32 {
@@ -33,7 +32,7 @@ func variadicSlice(receivingSlice ...float32) float32 {
 		sum += value
 	}
 
-	return sum/sliceLength
+	return sum / sliceLength
 }
 
 func pointingArray(array *[4]int) {
@@ -46,9 +45,9 @@ func storePointerAddress() {
 	value := 10 // it takes space in memory
 	pointerOnValue := &value
 	pl("In pointerOnValue we store address in memory :", pointerOnValue) //0xc00001a0a8
-	pl("Get value by pointer on it: ", *pointerOnValue) // 10
+	pl("Get value by pointer on it: ", *pointerOnValue)                  // 10
 	*pointerOnValue += 5
-	pl("New value in memory after modify: ",*pointerOnValue)
+	pl("New value in memory after modify: ", *pointerOnValue)
 }
 
 func sendValueAsAPointer(receiver *string) string {
@@ -61,7 +60,7 @@ func sendValueAsAPointer(receiver *string) string {
 func sendValueAsACopyFunc(receiver string) string {
 	// When I receiver value here it's copies value to a new address cell, and it considers as a new value
 	changedReceiver := strings.Replace(receiver, "go", "golang", -1)
-	pl("Output from function:",  changedReceiver)
+	pl("Output from function:", changedReceiver)
 
 	return changedReceiver
 }
@@ -72,5 +71,5 @@ func variadicFunction(numbers ...int) {
 		sum += item
 	}
 
-	pl("Summa of variadic function: ",sum)
+	pl("Summa of variadic function: ", sum)
 }

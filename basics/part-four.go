@@ -1,38 +1,36 @@
-package main
+package basics
 
 import (
 	"fmt"
-	"github.com/max-rodziyevsky/go-essentials/mypackage"
-	"log"
 )
 
 func MapsAndGenericsAndStructs() {
 	/* This Section about Maps: */
 
-	//basicThingWithMaps()
-	//customTypeInMap()
+	basicThingWithMaps()
+	customTypeInMap()
 
 	/*
 		This Section about Generics
 	*/
-	//basicThingAboutGenerics()
+	basicThingAboutGenerics()
 
 	/*
 		This Section about Structs:
 	*/
-	//customerFillerFunc()
-	//rectangleCallFunc()
+	customerFillerFunc()
+	rectangleCallFunc()
 
 	/*
 		This Section about Composition
 	*/
 
-	//composition
+	composition()
 
 	/*
 		This Section about Define Types
 	*/
-	//defineTypesMeasurements()
+	defineTypesMeasurements()
 }
 
 /* This Section about Maps: */
@@ -237,13 +235,4 @@ func defineTypesMeasurements() {
 
 func (teaSp teaSpoon) toMileLiters() mileLiters {
 	return mileLiters(teaSp * 4.92)
-}
-
-func setterGetterEncapsulation() {
-	date := mypackage.Date{}
-	err := date.SetDay(31)
-	if err != nil {
-		log.Fatal(err)
-	}
-	pl(date.Day())
 }

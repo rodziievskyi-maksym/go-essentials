@@ -13,23 +13,23 @@ func main() {
 	/* alt + command + / -> creates comment block section*/
 
 	// Part one
-	//runFirstPart()
+	//basics.RunFirstPart()
 
 	// Part two
-	//runSecondPart()
+	//basics.RunSecondPart()
 
 	// Part three
-	//workWithFiles()
+	//basics.WorkWithFiles()
 
 	// Part Four
-	//MapsAndGenericsAndStructs()
+	//basics.MapsAndGenericsAndStructs()
 
-	// Part Five Struct Encapsulation Getters/Setters
-	//setterGetterEncapsulation()
+	// Part Five Struct Encapsulation Getters/Setters And Package Practice
+	//mypackage.SetterGetterEncapsulation()
 
 	// Interfaces
-	//stringCaller()
-	//AreaCaller()
+	//basics.StringCaller()
+	//basics.AreaCaller()
 
 	// Concurrency -> GoRoutine
 	//concurrency.CountToCaller()
@@ -39,4 +39,6 @@ func main() {
 
 	// Concurrency -> GoRoutine -> Mutex
 	//concurrency.MutexCaller()
+
+	//Closures
 }

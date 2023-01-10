@@ -1,6 +1,10 @@
 package mypackage
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+	"log"
+)
 
 type Date struct {
 	day, month, year int
@@ -39,4 +43,13 @@ func (d *Date) checkDay(day int) error {
 		return errors.New("incorrect day range")
 	}
 	return nil
+}
+
+func SetterGetterEncapsulation() {
+	date := Date{}
+	err := date.SetDay(31)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(date.Day())
 }

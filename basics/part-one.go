@@ -1,4 +1,4 @@
-package main
+package basics
 
 import (
 	"bufio"
@@ -14,7 +14,9 @@ import (
 	"unicode/utf8"
 )
 
-func runFirstPart() {
+var pl = fmt.Println
+
+func RunFirstPart() {
 	askAName() // used bufio and os.Stdin
 	defineVars()
 	dataTypesAndZeroValues() // reflect.TypeOf

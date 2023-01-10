@@ -1,4 +1,4 @@
-package main
+package basics
 
 import (
 	"bufio"
@@ -8,7 +8,6 @@ import (
 	"os"
 	"time"
 )
-
 
 /*
 	Exactly one of O_RDONLY, O_WRONLY, or O_RDWR must be specified.
@@ -38,19 +37,16 @@ import (
 -rwxr-----	0740	owner can read, write, & execute; group can only read; others have no permissions
 */
 
+func WorkWithFiles() {
 
-func workWithFiles() {
+	inputData := inputData()
+	file := createEmptyFile()
+	fileInfoFunc(file.Name())
+	writeIntoFile(inputData, file)
 
-	//var fileName string = "new-text-file.txt"
+	readOutOfFile(file.Name())
 
-	//inputData := inputData()
-	//file := createEmptyFile()
-	//fileInfoFunc(file.Name())
-	//writeIntoFile(inputData, file)
-	//
-	//readOutOfFile(file.Name())
-
-	//defer file.Close()
+	defer file.Close()
 
 	//readWholeFile(fileValue)
 	//readSomeBytesFromFile(fileValue, 10)
@@ -114,7 +110,7 @@ func readOutOfFile(filePath string) {
 func readWholeFile(fileName string) {
 	file, err := os.ReadFile(fileName)
 	check(err)
-	pl("Read whole file: ",string(file))
+	pl("Read whole file: ", string(file))
 }
 
 func readSomeBytesFromFile(fileName string, mountOfBytes int) {
@@ -129,8 +125,6 @@ func readSomeBytesFromFile(fileName string, mountOfBytes int) {
 	fmt.Printf("%d bytes: %s\n", numberOfBytes, string(fileValue[:numberOfBytes]))
 }
 
-
-
 func createDirIfNotExists(path string) {
 	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		err := os.Mkdir(path, os.ModePerm)
@@ -143,4 +137,3 @@ func check(e error) {
 		log.Fatal(e)
 	}
 }
-

@@ -1,4 +1,4 @@
-package main
+package basics
 
 import (
 	"fmt"
@@ -54,7 +54,7 @@ type Stringer interface {
 	String() string
 }
 
-func stringCaller() {
+func StringCaller() {
 	a := Article{
 		Title:  "Understanding Interfaces in Go",
 		Author: "Sammy Shark",
