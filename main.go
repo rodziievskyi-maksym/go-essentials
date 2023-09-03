@@ -1,7 +1,10 @@
 package main
 
 import (
+	"context"
 	"fmt"
+	"os/signal"
+	"syscall"
 )
 
 var pl = fmt.Println
@@ -41,4 +44,22 @@ func main() {
 	//concurrency.MutexCaller()
 
 	//Closures
+	//basics.Closures()
+
+	//Recursion
+	//basics.Recursion()
+
+	//shutdownCtx, cancel := context.WithCancel(context.Background())
+	//osSighCh := make(chan os.Signal)
+	//signal.Notify(osSighCh, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+	//go func() {
+	//	<-osSighCh
+	//	cancel()
+	//}()
+
+	shutdownCtx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+	_ = cancel
+
+	<-shutdownCtx.Done()
+	//graceful_shutdown.GracefulShutdown()
 }
