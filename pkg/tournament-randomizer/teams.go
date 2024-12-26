@@ -1,63 +1,29 @@
 package main
 
+type Teams []string
+
 type GodTear struct {
 	Teams []Teams
 }
 
-type Teams []string
-
-func NewGodTear(teams []Teams) GodTear {
-	return GodTear{Teams: teams}
-}
-
-/*
-Manchester City, Liverpool, Manchester United, Arsenal
-
-Bayern Munich, Borussia Dortmund,
-
-Real Madrid, Barcelona, Athletic Madrid
-
-Napoli, Milan, Inter
-
-
-
-*/
-
-func ReceiveGodTearTeams() []Teams {
-	england := Teams{"England:Manchester-City,", "England:Liverpool", "England:Manchester-United", "England:Chelsea"}
+func (gt *GodTear) ReceiveGodTearTeams() []Teams {
+	england := Teams{"England:Manchester-City", "England:Liverpool", "England:Arsenal", "England:Man United"}
 	germany := Teams{"Germany:Bayern-Munich"}
-	italy := Teams{"Italy:Juventus(Piemonte Calcio)", "Italy:Inter", "Italy:Napoli"}
+	france := Teams{"France:PSG"}
 	spain := Teams{"Spain:Real-Madrid", "Spain:Barcelona", "Spain:Athletic-Madrid"}
 
 	return []Teams{
 		england,
 		germany,
-		italy,
 		spain,
+		france,
 	}
 }
 
-type SecondTier struct {
-	Teams []Teams
-}
+func NewGodTear(teams []Teams) GodTear {
+	godTear := GodTear{}
 
-func NewSecondTier(teams []Teams) SecondTier {
-	return SecondTier{Teams: teams}
-}
+	godTear.Teams = godTear.ReceiveGodTearTeams()
 
-func ReceiveSecondTierTeams() []Teams {
-	england := Teams{"England:Tottenham", "England:Leicester-City", "England:West-Ham"}
-	germany := Teams{"Germany:Borussia-Dortmund", "Germany:Leverkusen", "Germany:RB-Leipzig"}
-	italy := Teams{"Italy:Lazio(Latuim)", "Italy:Roma"}
-	spain := Teams{"Spain:Athletic-Club", "Spain:Real-Sociedad", "Spain:Villarreal", "Spain:Sevilla"}
-
-	others := Teams{"Netherlands:Ajax", "Portugal:Benfica", "France:Monaco", "France:Marcel-OM"}
-
-	return []Teams{
-		england,
-		germany,
-		italy,
-		spain,
-		others,
-	}
+	return godTear
 }

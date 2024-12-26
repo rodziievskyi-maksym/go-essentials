@@ -9,8 +9,13 @@ import (
 
 var players = []string{
 	"Max",
-	"Oleja",
 	"Misha",
+	"Oleja",
+	//"Artem",
+	//"Igor",
+	//"Andrey",
+	//"Nikita",
+	//"Dima",
 }
 
 type Draft struct {
@@ -33,10 +38,7 @@ func main() {
 	secondTier := NewSecondTier(ReceiveSecondTierTeams())
 
 	newDraft := NewDraft(newPlayers, godTier, secondTier)
-	result := newDraft.Draft()
-
-	// write into the file
-	fmt.Println(result)
+	_ = newDraft.Draft()
 }
 
 func (d *Draft) Draft() *Set {
