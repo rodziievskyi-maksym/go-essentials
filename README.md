@@ -1,4 +1,10 @@
-Packages I used:
+**`[VERSION 2 NOTES]`**
+
+
+
+**`[VERSION 1 NOTES]`**
+
+Packages I u sed:
 
 https://pkg.go.dev/bufio@go1.19.4
 
