@@ -1,4 +1,16 @@
-Packages I used:
+**`[VERSION 2 NOTES]`**
+
+Useful Medium article on how type string is working in Go: [link](https://medium.com/@andreiboar/demystifying-golang-strings-05981b84f1a7)  
+Informative article about Basic Types in Go: [link](https://go101.org/article/basic-types-and-value-literals.html) 
+
+<span style="color:red">MUST READ:</span>  
+Scheduling in GO: [link to article](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)  
+Learn GO with tests, resource: [link](https://quii.gitbook.io/learn-go-with-tests)
+
+
+**`[VERSION 1 NOTES]`**
+
+Packages I u sed:
 
 https://pkg.go.dev/bufio@go1.19.4
 

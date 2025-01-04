@@ -2,17 +2,13 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"github.com/rodziievskyi-maksym/go-essentials/v2_2025/util"
 	"os/signal"
 	"syscall"
 )
 
-var pl = fmt.Println
-
 func main() {
-	pl("---------------------------")
-	pl("Main function processing...")
-	pl("---------------------------\n")
+	util.PrintMainSeparationMessage()
 	/* alt + command + / -> creates comment block section*/
 
 	// Part one
