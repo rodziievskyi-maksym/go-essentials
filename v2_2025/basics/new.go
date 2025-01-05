@@ -5,8 +5,6 @@ import (
 	"unsafe"
 )
 
-//TODO: I may need to rename this file to new_make.go
-
 /*
 	When you define a struct in Go,
 	it does not allocate memory until you create an instance of it.
