@@ -7,6 +7,12 @@ Informative article about Basic Types in Go: [link](https://go101.org/article/ba
 Scheduling in GO: [link to article](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)  
 Learn GO with tests, resource: [link](https://quii.gitbook.io/learn-go-with-tests)
 
+Concurrency section
+
+Go backend clean architecture  
+[link to github](https://github.com/amitshekhariitbhu/go-backend-clean-architecture)  
+[link to article](https://outcomeschool.com/blog/go-backend-clean-architecture)
+
 
 **`[VERSION 1 NOTES]`**
 
