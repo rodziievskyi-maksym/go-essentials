@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 )
 
 func main() {
@@ -26,12 +27,21 @@ func main() {
 	fmt.Println(oddNumber)
 
 	//what is the index of 7 in this slice
-	desiredNum := 10
+	desiredNum := 7
 	indexOfDesiredNum := findIndex(oddNumber, desiredNum)
 	if indexOfDesiredNum == -1 {
 		log.Fatal("No index found")
 	}
 	fmt.Println(oddNumber[indexOfDesiredNum])
+
+	//generate random
+	numbers := make([]float64, 10)
+	for i := 0; i < 10; i++ {
+		numbers[i] = rand.Float64()
+	}
+
+	sumResult := calculateSum(numbers)
+	fmt.Printf("type %T, result: %f \n", sumResult, sumResult)
 }
 
 // normal function
@@ -55,4 +65,17 @@ func findIndex[T comparable](oddNumbers []T, num T) int {
 	}
 
 	return -1
+}
+
+type Number interface {
+	int | int32 | int64 | float32 | float64
+}
+
+func calculateSum[T Number](numbers []T) T {
+	var sum T
+	for i := range numbers {
+		sum += numbers[i]
+	}
+
+	return sum
 }
