@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"slices"
 )
 
 func main() {
@@ -33,6 +34,9 @@ func main() {
 		log.Fatal("No index found")
 	}
 	fmt.Println(oddNumber[indexOfDesiredNum])
+
+	//findIndex func already exists in slices standard library
+	slices.Index(oddNumber, desiredNum)
 
 	//generate random
 	numbers := make([]float64, 10)
@@ -78,4 +82,19 @@ func calculateSum[T Number](numbers []T) T {
 	}
 
 	return sum
+}
+
+/*
+	at first glance this type parameter confuses me S ~[]E,
+	but it means (~) any type that underlay slice
+*/
+
+func SlicesIndex[S ~[]E, E comparable](slice S, value E) int {
+	for i := range slice {
+		if slice[i] == value {
+			return i
+		}
+	}
+
+	return -1
 }
