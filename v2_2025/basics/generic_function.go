@@ -38,6 +38,9 @@ func main() {
 	//findIndex func already exists in slices standard library
 	slices.Index(oddNumber, desiredNum)
 
+	anotherIndex := SlicesIndex(oddNumber, desiredNum)
+	fmt.Println(anotherIndex)
+
 	//generate random
 	numbers := make([]float64, 10)
 	for i := 0; i < 10; i++ {
