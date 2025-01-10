@@ -106,3 +106,20 @@ func main() {
 
 	fmt.Println(result)
 }
+
+//The showcase how struct embedding lead to interface inheritance
+//Child class implements ChildInterface and by embedding it Parent does it too.
+
+type ParentStruct struct {
+	ChildStruct
+}
+
+type ChildStruct struct{}
+
+func (c ChildStruct) testFunc() {
+	fmt.Println("testFunc")
+}
+
+type ChildInterface interface {
+	testFunc()
+}
