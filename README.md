@@ -7,7 +7,16 @@ Informative article about Basic Types in Go: [link](https://go101.org/article/ba
 Scheduling in GO: [link to article](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html)  
 Learn GO with tests, resource: [link](https://quii.gitbook.io/learn-go-with-tests)
 
-Concurrency section
+<h3> Concurrency section </h3>
+Alright, How I'm actually going to learn this topic.
+
+I've built the roadmap map, but I feel that I may mess up with order
+So, I decided to build the project by Woelki's YouTube [Video](https://www.youtube.com/watch?v=y2jP45S9BHk)
+first and then delve into each topic.
+
+- Folder [[woelki_youtube_project](./v2_2025/basics/concurrency/woelki_youtube_project)]
+
+
 
 Go backend clean architecture  
 [link to github](https://github.com/amitshekhariitbhu/go-backend-clean-architecture)  
