@@ -5,6 +5,16 @@ import (
 )
 
 /*
+	We can set debugChan to true in source code of chan.go file to see more massages while working with channels
+
+	const (
+		maxAlign  = 8
+		hchanSize = unsafe.Sizeof(hchan{}) + uintptr(-int(unsafe.Sizeof(hchan{}))&(maxAlign-1))
+		debugChan = false <-
+	)
+*/
+
+/*
 	How the channel struct look
 
 	type hchan struct {
@@ -82,7 +92,8 @@ func main() {
 		at this point we only send data to channel, and it is full. SpaceX comes late we're already building the rocket
 		this piece may go for the next rocket.
 
-		This goroutine is on hold (pause) by Go's scheduler
+		This goroutine is on hold (pause) with a help of gopark() function by Go's scheduler
+		and added to channel's sendQ field
 	*/
 	go SpaceXFactoryApproval(rocketLegoCh, coneHeadPartOriginal)
 
