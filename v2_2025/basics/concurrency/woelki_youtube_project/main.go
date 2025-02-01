@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/rodziievskyi-maksym/go-essentials/v2_2025/util"
 	"math/rand"
+	"sync"
 	"time"
 )
 
@@ -12,37 +13,63 @@ const TimeDuration time.Duration = time.Millisecond * 50
 type Order struct {
 	ID     int
 	Status string
+	mu     sync.Mutex
 }
 
 func main() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+
 	util.PrintMainSeparationMessage()
 
-	orders := generateOrders(20)
+	orderCh := make(chan *Order, 20)
 
-	processOrders(orders)
+	go func() {
+		defer wg.Done()
+		defer close(orderCh)
 
-	updateOrderStatuses(orders)
+		for _, order := range generateOrders(20) {
+			orderCh <- order
+		}
 
-	reportOrderStatus(orders)
+		fmt.Println("Done with generating orders")
+	}()
+
+	go processOrders(orderCh, &wg)
+
+	//for i := 0; i < 3; i++ {
+	//	go func() {
+	//		defer wg.Done()
+	//		for _, order := range orders {
+	//			updateOrderStatus(order)
+	//		}
+	//	}()
+	//}
+
+	wg.Wait()
+
+	//reportOrderStatus(orders)
 
 	fmt.Println(util.Blue + "\nAll operations complete. Exiting main.")
 }
 
 // update order status function
-func updateOrderStatuses(orders []*Order) {
-	for _, order := range orders {
-		time.Sleep(TimeDuration)
-		order.Status = []string{
-			"Processing", "Shipped", "Delivered",
-		}[rand.Intn(3)]
+func updateOrderStatus(order *Order) {
+	defer order.mu.Unlock()
+	order.mu.Lock()
+	time.Sleep(TimeDuration)
+	order.Status = []string{
+		"Processing", "Shipped", "Delivered",
+	}[rand.Intn(3)]
 
-		fmt.Printf("Update order %d status: %s\n", order.ID, order.Status)
-	}
+	fmt.Printf("Update order %d status: %s\n", order.ID, order.Status)
 }
 
 // real world simulation
-func processOrders(orders []*Order) {
-	for _, order := range orders {
+func processOrders(orderCh <-chan *Order, group *sync.WaitGroup) {
+	defer group.Done()
+
+	for order := range orderCh {
 		time.Sleep(TimeDuration)
 		fmt.Printf("Processing order %d\n", order.ID)
 	}
@@ -62,14 +89,11 @@ func generateOrders(count int) []*Order {
 }
 
 func reportOrderStatus(orders []*Order) {
-	for i := 0; i < 5; i++ {
-		time.Sleep(time.Second * 1)
-		fmt.Println(util.Magenta + "\n ---Order Status Report ---")
+	fmt.Println("\n ---Order Status Report ---")
 
-		for _, order := range orders {
-			fmt.Printf("Order %d: %s\n", order.ID, order.Status)
-		}
-
-		fmt.Println("---------------------------------------\n")
+	for _, order := range orders {
+		fmt.Printf("Order %d: %s\n", order.ID, order.Status)
 	}
+
+	fmt.Println("---------------------------------------\n")
 }
