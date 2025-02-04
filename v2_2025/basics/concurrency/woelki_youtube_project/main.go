@@ -18,11 +18,12 @@ type Order struct {
 
 func main() {
 	var wg sync.WaitGroup
-	wg.Add(2)
+	wg.Add(3)
 
 	util.PrintMainSeparationMessage()
 
 	orderCh := make(chan *Order, 20)
+	processedOrderCh := make(chan *Order, 20)
 
 	go func() {
 		defer wg.Done()
@@ -35,7 +36,25 @@ func main() {
 		fmt.Println("Done with generating orders")
 	}()
 
-	go processOrders(orderCh, &wg)
+	go processOrders(orderCh, processedOrderCh, &wg)
+
+	//select without default case is considered as blocking mechanism. It'll wait until any of cases are executed.
+	go func() {
+		defer wg.Done()
+		for {
+			select {
+			case processedOrder, ok := <-processedOrderCh:
+				if !ok {
+					fmt.Println("Processing channel closed")
+					return
+				}
+				fmt.Printf("Processed order %d with status %s\n", processedOrder.ID, processedOrder.Status)
+			case <-time.After(time.Millisecond * 100):
+				fmt.Println("Timeout is waiting for operations")
+				return
+			}
+		}
+	}()
 
 	//for i := 0; i < 3; i++ {
 	//	go func() {
@@ -66,12 +85,16 @@ func updateOrderStatus(order *Order) {
 }
 
 // real world simulation
-func processOrders(orderCh <-chan *Order, group *sync.WaitGroup) {
-	defer group.Done()
+func processOrders(inOrderCh <-chan *Order, outOrderCh chan<- *Order, wg *sync.WaitGroup) {
+	defer func() {
+		wg.Done()
+		close(outOrderCh)
+	}()
 
-	for order := range orderCh {
+	for order := range inOrderCh {
 		time.Sleep(TimeDuration)
-		fmt.Printf("Processing order %d\n", order.ID)
+		order.Status = "Processed"
+		outOrderCh <- order
 	}
 }
 
