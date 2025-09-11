@@ -6,22 +6,21 @@ import (
 	"strconv"
 )
 
+type DayOfTheWeek uint64
+
+const (
+	Monday = iota
+	Tuesday
+	Wednesday
+	Thursday
+	Friday
+	Saturday
+	Sunday
+	OtherDays
+	SecondsOtherDay
+)
+
 func main() {
-	type DayOfTheWeek uint8
-
-	const (
-		Monday DayOfTheWeek = iota
-		Tuesday
-		Wednesday
-		Thursday
-		Friday
-		Saturday
-		Sunday
-		OtherDays
-		SecondsOtherDay
-		ThirdOtherDay
-	)
-
 	args := os.Args
 
 	numA, err := strconv.Atoi(args[1])

@@ -17,7 +17,7 @@ func main() {
 
 	positions := make([]string, len(chessPiecePositionMap))
 	index := 0
-	for position := range chessPiecePositionMap {
+	for _, position := range chessPiecePositionMap {
 		//explicitly avoid append function for demonstration purposes
 		//slice pre-allocation more expensive than then int variable
 		positions[index] = position

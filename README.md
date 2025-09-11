@@ -14,7 +14,7 @@ I've built the roadmap map, but I feel that I may mess up with order
 So, I decided to build the project by Woelki's YouTube [Video](https://www.youtube.com/watch?v=y2jP45S9BHk)
 first and then delve into each topic.
 
-- Folder [[woelki_youtube_project](./v2_2025/basics/concurrency/woelki_youtube_project)]
+- Folder [[woelki_youtube_project](v2_2025/03_advanced/concurrency/woelki_youtube_project)]
 
 
 

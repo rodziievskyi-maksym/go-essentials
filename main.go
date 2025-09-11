@@ -12,23 +12,23 @@ func main() {
 	/* alt + command + / -> creates comment block section*/
 
 	// Part one
-	//basics.RunFirstPart()
+	//01_basics.RunFirstPart()
 
 	// Part two
-	//basics.RunSecondPart()
+	//01_basics.RunSecondPart()
 
 	// Part three
-	//basics.WorkWithFiles()
+	//01_basics.WorkWithFiles()
 
 	// Part Four
-	//basics.MapsAndGenericsAndStructs()
+	//01_basics.MapsAndGenericsAndStructs()
 
 	// Part Five Struct Encapsulation Getters/Setters And Package Practice
 	//mypackage.SetterGetterEncapsulation()
 
 	// Interfaces
-	//basics.StringCaller()
-	//basics.AreaCaller()
+	//01_basics.StringCaller()
+	//01_basics.AreaCaller()
 
 	// Concurrency -> GoRoutine
 	//concurrency.CountToCaller()
@@ -40,10 +40,10 @@ func main() {
 	//concurrency.MutexCaller()
 
 	//Closures
-	//basics.Closures()
+	//01_basics.Closures()
 
 	//Recursion
-	//basics.Recursion()
+	//01_basics.Recursion()
 
 	//shutdownCtx, cancel := context.WithCancel(context.Background())
 	//osSighCh := make(chan os.Signal)
