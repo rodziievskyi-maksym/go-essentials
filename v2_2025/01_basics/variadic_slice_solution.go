@@ -9,7 +9,7 @@ func addUser(user ...string) {
 }
 
 func main() {
-	addUser("Bob")
+	addUser("Bob", "Mike", "Jack")
 	addUser("Mike")
 	addUser("Jack")
 

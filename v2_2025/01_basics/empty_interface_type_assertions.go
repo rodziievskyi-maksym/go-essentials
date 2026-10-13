@@ -23,7 +23,7 @@ func main() {
 }
 
 func handleUnknownType(value interface{}) {
-	//to trigger deferred anonymous recover function it has to be on top of the function stack
+	//to trigger deferred anonymous recover function it has to be on top of the function stack FILO
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("I just recover your program after a panic!: ", err)
@@ -44,16 +44,29 @@ func handleUnknownType(value interface{}) {
 	/*
 		to avoid panic! triggering test assertion by receiving second value
 	*/
-	thirdAssertion, ok := value.(string)
+	thirdAssertion, ok := value.(string) // !best practices to avoid panic
 	if !ok {
 		fmt.Println("error occurs while asserting empty interface")
 	}
 
+	/*
+		%v (Value): виводить значення змінної в його стандартному (дефолтному) форматі.
+
+		Якщо це структура, виведе значення її полів: {John 25}.
+
+		Якщо додати прапорець %+v, додадуться назви полів структури: {Name:John Age:25}.
+
+		Якщо додати %#v, виведе значення у синтаксисі сирцевого коду Go: main.User{Name:"John", Age:25}.
+
+		%T (Type): виводить повну назву типу змінної згідно з синтаксисом Go (включно з пакетом).
+
+		Наприклад: int, string, []uint8, main.User.
+	*/
 	fmt.Printf("(%v, %T) can't use len() on value \n", value, value)
 	fmt.Printf("(%v, %T) len:%d \n", assertedValue, assertedValue, len(assertedValue))
 	fmt.Printf("Third assertion (%v, %T) len:%d \n", thirdAssertion, thirdAssertion, len(thirdAssertion))
 
-	//fmt.Printf("after the panic here shoul be empty value of asserted type (int) %T", secondAssertion)
+	//fmt.Printf("after the panic here should be empty value of asserted type (int) %T", secondAssertion)
 
 	/*
 		Type Switches this is a construct that permits several type assertions
